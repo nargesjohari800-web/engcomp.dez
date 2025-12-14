@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دوره‌ها — انجمن علمی کاربردی کامپیوتر</title>
+  <link rel="stylesheet" href="./styel.css">
+  <link rel="icon" href="./logo.jpeg" type="image/png">
+  <style>
+    :root {
+      --brand: #2B3A67;
+      --brand-2: #394874;
+      --muted: #6E7890;
+      --bg: #F6F8FB;
+      --card-bg: #fff;
+      --glass: rgba(43, 58, 103, 0.06);
+      --radius: 12px;
+      --max-w: 1100px;
+      --gap: 20px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--brand-2);
+      scroll-behavior: smooth
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 28px auto;
+      padding: 0 18px
+    }
+
+    /* Header */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--brand)
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1rem
+    }
+
+    .brand p {
+      margin: 0;
+      font-size: 0.78rem;
+      color: var(--muted)
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      flex: 0 0 48px;
+      background: linear-gradient(180deg, rgba(43, 58, 103, 0.75), rgba(57, 72, 116, 0.75)), url(./logo.jpeg);
+      background-size: cover;
+      background-blend-mode: multiply;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(43, 58, 103, 0.12);
+      font-family: monospace
+    }
+
+    .primary-nav {
+      display: flex;
+      gap: 10px;
+      align-items: center
+    }
+
+    .primary-nav .nav-link {
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--brand-2);
+      font-size: 0.95rem;
+      transition: all .18s
+    }
+
+    .primary-nav .nav-link:hover {
+      background: var(--glass);
+      transform: translateY(-2px)
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid transparent;
+      padding: 6px;
+      border-radius: 8px;
+      cursor: pointer
+    }
+
+    /* Mobile menu */
+    #mobileMenu {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      transition: .3s ease
+    }
+
+    #mobileMenu.active {
+      display: block;
+      visibility: visible;
+      opacity: 1
+    }
+
+    #mobileMenu .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    #mobileMenu .mobile-nav a {
+      display: block;
+      padding: 12px 10px;
+      border-radius: 10px;
+      background: var(--glass);
+      text-decoration: none;
+      color: var(--brand-2);
+      transition: .2s ease
+    }
+
+    #mobileMenu .mobile-nav a:hover {
+      background: rgba(43, 58, 103, .14)
+    }
+
+    @media (max-width:900px) {
+      .primary-nav {
+        display: none !important
+      }
+
+      .menu-btn {
+        display: inline-flex !important
+      }
+    }
+
+    /* Courses */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(43, 58, 103, 0.04);
+      margin-bottom: 20px
+    }
+
+    .courses-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: var(--muted);
+      align-items: center
+    }
+
+    .courses-controls select {
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(43, 58, 103, 0.2)
+    }
+
+    .course-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px
+    }
+
+    .course {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(43, 58, 103, 0.04);
+      transition: transform .12s
+    }
+
+    .course:hover {
+      transform: translateY(-2px)
+    }
+
+    .course-pic {
+      width: 138px;
+      height: 185px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex: 0 0 138px;
+    }
+
+
+    .course-body h4 {
+      margin: 0;
+      color: var(--brand)
+    }
+
+    .course-body p {
+      margin: 4px 0;
+      color: var(--muted)
+    }
+
+    .course-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+      align-items: center
+    }
+
+    .btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 0;
+      font-weight: 600;
+      background: var(--brand);
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(43, 58, 103, 0.12);
+      transition: transform .15s, box-shadow .15s
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--brand-2);
+      border: 1px solid rgba(43, 58, 103, 0.08);
+      box-shadow: none;
+      font-weight: 500
+    }
+
+    .btn.small {
+      padding: 6px 8px;
+      font-size: 0.9rem;
+      border-radius: 8px
+    }
+
+    .course-details {
+      margin-top: 8px;
+      padding: 10px;
+      background: rgba(43, 58, 103, 0.05);
+      border-radius: 8px;
+      display: none
+    }
+
+    .course-details.show {
+      display: block
+    }
+
+    /* Course label */
+    .course-label {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-left: 6px;
+    }
+
+    .course-label.open {
+      background-color: var(--brand);
+      color: #fff;
+    }
+
+    .course-label.closed {
+      background-color: #E04E3D;
+      color: #fff;
+    }
+
+    /* Channels */
+    .channels .channel-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .channel {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      text-decoration: none;
+      color: var(--brand-2);
+      padding: 8px;
+      border-radius: 8px
+    }
+
+    .channel .icon {
+      width: 20px;
+      height: 20px;
+      fill: var(--brand-2);
+      opacity: 0.9
+    }
+
+    /* Footer */
+    .site-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 0.9rem
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header class="site-header">
+      <a href="./index.html" class="brand" aria-label="خانه">
+        <span class="logo" aria-hidden="true"></span>
+        <div>
+          <h1>انجمن علمی کاربردی کامپیوتر</h1>
+          <p>دانشگاه آزاد دزفول</p>
+        </div>
+      </a>
+
+      <nav class="primary-nav" aria-label="ناوبری اصلی">
+        <a class="nav-link" href="index.html">خانه</a>
+        <a class="nav-link" href="./about.html">درباره ما</a>
+        <a class="nav-link" href="./events.html">رویدادها</a>
+        <a class="nav-link" href="./courses.html">دوره‌ها</a>
+        <a class="nav-link" href="#team">اعضا</a>
+        <a class="nav-link" href="#channels">کانال‌ها</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+    </header>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <nav class="mobile-nav">
+        <a class="nav-link" href="index.html">خانه</a>
+        <a class="nav-link" href="./about.html">درباره ما</a>
+        <a class="nav-link" href="./events.html">رویدادها</a>
+        <a class="nav-link" href="./courses.html">دوره‌ها</a>
+        <a class="nav-link" href="#team">اعضا</a>
+        <a class="nav-link" href="#channels">کانال‌ها</a>
+      </nav>
+    </div>
+
+    <!-- Courses Section -->
+    <section class="card courses" aria-labelledby="coursesTitle">
+      <h3 id="coursesTitle">دوره‌ها</h3>
+
+      <div class="courses-controls">
+        <label for="courseFilter">فیلتر دوره‌ها:</label>
+        <select id="courseFilter">
+          <option value="all">همه</option>
+          <option value="ai">هوش مصنوعی</option>
+          <option value="python">پایتون</option>
+          <option value="seo">سئو</option>
+          <option value="3dmax">تری‌دی‌مکس</option>
+
+        </select>
+
+        <label for="courseSort">مرتب‌سازی بر اساس تاریخ:</label>
+        <select id="courseSort">
+          <option value="newest">جدیدترین</option>
+          <option value="oldest">قدیمی‌ترین</option>
+        </select>
+      </div>
+
+      <div id="courseList" class="course-list">
+
+        <!-- Sample Course: هوش مصنوعی -->
+        <article class="course" data-kind="ai" data-date="2025-12-01">
+          <img src="./photo1765676193(3).jpeg" alt="AI Course" class="course-pic">
+          <div class="course-body">
+            <h4>دوره VMware</h4>
+            <p>آموزش مقدماتی هوش مصنوعی و یادگیری ماشین</p>
+            <div class="course-actions">
+              <a class="btn small" href="#">اطلاعات بیشتر</a>
+              <span class="course-label closed">اتمام ثبت‌نام — 1404/01/15</span>
+            </div>
+
+            <div class="extra-details" style="display:none;">
+              در این پکیج، مفاهیم پایه مجازی‌سازی و کار با نرم‌افزار VMware به‌صورت عملی آموزش داده می‌شود و دانشجویان
+              با راه‌اندازی و مدیریت ماشین‌های مجازی آشنا می‌شوند.
+            </div>
+          </div>
+        </article>
+
+        <!-- Sample Course: پایتون -->
+        <article class="course" data-kind="python" data-date="2026-01-10">
+          <img src="./py.jpeg" alt="Python Course" class="course-pic">
+          <div class="course-body">
+            <h4>دوره پایتون</h4>
+            <p>آموزش برنامه‌نویسی پایتون از مقدماتی تا پیشرفته</p>
+            <div class="course-actions">
+              <a class="btn small" href="#">اطلاعات بیشتر</a>
+              <span class="course-label open">ثبت‌نام باز — 1405/02/01</span>
+            </div>
+            <div class="extra-details" style="display:none;">
+              این پکیج با هدف آموزش عملی برنامه‌نویسی پایتون طراحی شده و شرکت‌کنندگان از مفاهیم پایه تا حل مسئله و
+              پیاده‌سازی پروژه‌های ساده را فرا می‌گیرند.
+            </div>
+          </div>
+        </article>
+
+        <!-- Sample Course: سئو -->
+        <article class="course" data-kind="seo" data-date="2026-03-05">
+          <img src="./seooo.jpeg" alt="SEO Course" class="course-pic">
+          <div class="course-body">
+            <h4>دوره سئو</h4>
+            <p>آموزش بهینه‌سازی سایت و بازاریابی دیجیتال</p>
+            <div class="course-actions">
+              <a class="btn small" href="#">اطلاعات بیشتر</a>
+              <span class="course-label open">ثبت‌نام باز — 1405/03/10</span>
+            </div>
+            <div class="extra-details" style="display:none;">
+              در این دوره، اصول اولیه بهینه‌سازی سایت برای موتورهای جستجو آموزش داده می‌شود و دانشجویان با مفاهیم پایه
+              سئو و افزایش دیده‌شدن وب‌سایت آشنا می‌شوند.
+            </div>
+          </div>
+        </article>
+        <!--  3 max -->
+        <article class="course" data-kind="3dmax" data-date="2026-04-20">
+          <img src=".//3max.jpeg" alt="دوره تری دی مکس پیشرفته" class="course-pic">
+
+          <div class="course-body">
+            <h4>پکیج آموزشی تری‌دی‌مکس پیشرفته</h4>
+            <p>مدل‌سازی، متریال‌دهی و رندر حرفه‌ای با 3Ds Max</p>
+
+            <div class="course-actions">
+              <a class="btn small" href="course-3dmax.html">اطلاعات بیشتر</a>
+              <span class="course-label open">ثبت‌نام باز — 1405/04/01</span>
+            </div>
+            <div class="extra-details" style="display:none;">
+              این پکیج شامل آموزش تخصصی مدل‌سازی، متریال‌دهی، نورپردازی و رندر حرفه‌ای در نرم‌افزار 3D Max است و برای
+              ورود به بازار کار طراحی شده است.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- Channels -->
+    <section id="channels" class="card channels" aria-labelledby="channelsTitle">
+      <h3 id="channelsTitle"> کانال‌ها و راه‌های ارتباطی</h3>
+
+      <div class="channel-list">
+        <a class="channel" href="https://www.instagram.com/engcomp_dez?igsh=MTJycG9nYjN0dGVkNQ==" target="_blank"
+          rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A4.5 4.5 0 1 1 7.5 13 4.5 4.5 0 0 1 12 8.5zm0 7A2.5 2.5 0 1 0 9.5 13 2.5 2.5 0 0 0 12 15.5zm4.25-8.75a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z" />
+          </svg>
+          <span>اینستاگرام</span>
+        </a>
+
+        <a class="channel" href="https://t.me/computer_sciassociation" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M9.5 15.5l-.4 4.3c.6 0 .9-.3 1.2-.6l2.8-2.7 5.8 4.2c1 .6 1.7.3 2-.9l3.6-16.7c.3-1.2-.4-1.7-1.3-1.4L1.7 10c-1.2.4-1.2 1.1-.2 1.4l4.7 1.5 10.9-6.8c.5-.3 1-.1.6.2z" />
+          </svg>
+          <span>تلگرام</span>
+        </a>
+
+        <a class="channel" href="https://chat.whatsapp.com/JBLRCANSnPEDCt16ZhQaf9?mode=hqrt2" target="_blank"
+          rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 2a10 10 0 0 0-8.7 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.6 14.3c-.2.6-1 1.1-1.6 1.2-.4.1-.9.1-1.5-.1s-1.5-.5-2.6-1.1a12.3 12.3 0 0 1-4.4-4.4C6.7 10.6 6.4 9.6 6.6 9c.1-.6.6-1.4 1.2-1.6h.8c.2 0 .4 0 .6.5l.8 1.8c.1.2.1.4 0 .6a2.5 2.5 0 0 1-.4.6c-.2.3-.3.4-.1.7a10 10 0 0 0 4.4 4.4c.3.2.5.1.7-.1l.6-.4c.2-.1.4-.1.6 0l1.8.8c.4.2.5.4.5.6z" />
+          </svg>
+          <span>واتساپ</span>
+        </a>
+
+        <a class="channel" href="mailto:cs@univ.edu">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 6v12h20V6l-10 6L2 6z" />
+          </svg>
+          <span>ایمیل</span>
+        </a>
+
+        <a class="channel" href="https://eitaa.com/computer_uni_dez" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 512 512" aria-hidden="true">
+            <circle cx="256" cy="256" r="256" fill="#2B3A67" />
+            <path d="M160 160h192v32H192v64h128v32H192v64h160v32H160z" fill="#ffffff" />
+          </svg>
+          <span>ایتا</span>
+        </a>
+
+        <a class="channel" href="tel:09200652305">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M6.6 2l3 1c.4.1.7.4.8.8l1 4c.1.4 0 .9-.3 1.2l-1.7 1.7a15 15 0 0 0 6.8 6.8l1.7-1.7c.3-.3.8-.4 1.2-.3l4 1c.4.1.7.4.8.8l1 3c.2.6-.1 1.2-.7 1.4A19 19 0 0 1 2 7.3c-.2-.6.2-1.3.8-1.4l3.8-1c.4-.1.8-.1 1 .1z" />
+          </svg>
+          <span>تماس تلفنی</span>
+        </a>
+
+      </div>
+    </section>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div>© انجمن علمی کامپیوتر دانشگاه آزاد دزفول </div>
+        <div class="muted">یادگیری، تجربه، رشد — کنار هم</div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => { mobileMenu.classList.toggle("active"); menuBtn.setAttribute("aria-expanded", mobileMenu.classList.contains("active")) });
+
+    // Filter courses
+    const filterSelect = document.getElementById("courseFilter");
+    const sortSelect = document.getElementById("courseSort");
+    const courseList = document.getElementById("courseList");
+    const courses = Array.from(courseList.children);
+
+    filterSelect.addEventListener("change", () => {
+      const kind = filterSelect.value;
+      courses.forEach(c => { c.style.display = (kind === "all" || c.dataset.kind === kind) ? "flex" : "none" })
+    });
+
+    sortSelect.addEventListener("change", () => {
+      const sorted = [...courses].sort((a, b) => {
+        const dateA = new Date(a.dataset.date);
+        const dateB = new Date(b.dataset.date);
+        return sortSelect.value === "newest" ? dateB - dateA : dateA - dateB;
+      });
+      sorted.forEach(c => courseList.appendChild(c));
+    });
+
+
+    // زوم عکس
+    let overlay = null;
+
+    document.querySelectorAll(".course-pic").forEach(img => {
+      img.style.cursor = "zoom-in";
+
+      img.addEventListener("click", () => {
+        // اگر بازه، ببند
+        if (overlay) {
+          overlay.remove();
+          overlay = null;
+          return;
+        }
+
+        // ساخت overlay
+        overlay = document.createElement("div");
+        overlay.style.position = "fixed";
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = "100vw";
+        overlay.style.height = "100vh";
+        overlay.style.background = "rgba(0,0,0,0.8)";
+        overlay.style.display = "flex";
+        overlay.style.alignItems = "center";
+        overlay.style.justifyContent = "center";
+        overlay.style.zIndex = 9999;
+        overlay.style.cursor = "zoom-out";
+
+        // ساخت تصویر بزرگ
+        const bigImg = document.createElement("img");
+        bigImg.src = img.src;
+        bigImg.style.maxWidth = "90%";
+        bigImg.style.maxHeight = "90%";
+        bigImg.style.borderRadius = "12px";
+        bigImg.style.boxShadow = "0 20px 60px rgba(0,0,0,0.6)";
+
+        overlay.appendChild(bigImg);
+        document.body.appendChild(overlay);
+
+        // بستن با کلیک
+        overlay.addEventListener("click", () => {
+          overlay.remove();
+          overlay = null;
+        });
+      });
+    });
+
+    // 
+    document.querySelectorAll(".course .btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const course = btn.closest(".course");
+        const details = course.querySelector(".extra-details");
+        if (!details) return;
+
+        // toggle نمایش/عدم نمایش
+        if (details.style.display === "none" || details.style.display === "") {
+          details.style.display = "block";
+        } else {
+          details.style.display = "none";
+        }
+      });
+    });
+
+  </script>
+</body>
+
+</html>

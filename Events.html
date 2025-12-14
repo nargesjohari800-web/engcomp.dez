@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>رویدادها — انجمن علمی کامپیوتر</title>
+  <link rel="stylesheet" href="./styel.css">
+  <link rel="icon" href="./logo.jpeg" type="image/png">
+  <style>
+    .event-pic {
+      width: 138px;
+      height: 185px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex: 0 0 138px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" role="main">
+
+    <!-- Header (همانند صفحه اصلی) -->
+    <header class="site-header">
+      <a href="index.html" class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <div>
+          <h1>انجمن علمی کاربردی کامپیوتر</h1>
+          <p>دانشگاه آزاد دزفول</p>
+        </div>
+      </a>
+      <nav class="primary-nav">
+        <a class="nav-link" href="index.html">خانه</a>
+        <a class="nav-link" href="about.html">درباره ما</a>
+        <a class="nav-link" href="events.html">رویدادها</a>
+        <a class="nav-link" href="courses.html">دوره‌ها</a>
+        <a class="nav-link" href="#team">اعضا</a>
+        <a class="nav-link" href="#channels">کانال‌ها</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </header>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <nav class="mobile-nav">
+        <a class="nav-link" href="index.html">خانه</a>
+        <a class="nav-link" href="about.html">درباره ما</a>
+        <a class="nav-link" href="events.html">رویدادها</a>
+        <a class="nav-link" href="courses.html">دوره‌ها</a>
+        <a class="nav-link" href="#team">اعضا</a>
+        <a class="nav-link" href="#channels">کانال‌ها</a>
+      </nav>
+    </div>
+
+    <!-- Hero -->
+    <!-- <section class="hero">
+      <div class="hero-left">
+        <h2>رویدادها و کارگاه‌ها</h2>
+        <p>مرکز تعامل دانشجویان، اساتید و محققان — مشاهده آخرین رویدادها و فعالیت‌ها.</p>
+      </div>
+    </section> -->
+
+    <!-- Filters -->
+    <div class="filters">
+      <label for="eventType">نوع رویداد:</label>
+      <select id="eventType">
+        <option value="all">همه</option>
+        <option value="workshop">کارگاه</option>
+        <option value="seminar">سمینار</option>
+        <option value="competition">مسابقه</option>
+      </select>
+
+      <label for="eventSort">مرتب‌سازی:</label>
+      <select id="eventSort">
+        <option value="newest">جدیدترین</option>
+        <option value="oldest">قدیمی‌ترین</option>
+        <option value="alpha">الفبا</option>
+      </select>
+    </div>
+
+    <!-- Event list -->
+    <div id="eventsList" class="event-list">
+      <article class="event" data-kind="workshop" data-date="2025-10-20">
+        <img src="poster-workshop.jpg" alt="پوستر کارگاه" class="event-pic">
+        <div class="event-body">
+          <h4>کارگاه: یادگیری عمیق</h4>
+          <p class="evt-meta">۲۰ مهر ۱۴۰۴ • ساعت ۱۴-۱۷</p>
+          <p class="evt-desc">مباحث پایه شبکه‌های عصبی و پیاده‌سازی عملی.</p>
+          <div class="event-actions">
+            <button class="btn small toggle-details">اطلاعات بیشتر</button>
+            <div class="event-details" style="display:none;">
+              <p>جزئیات بیشتر درباره کارگاه و منابع آموزشی.</p>
+              <a href="#" class="btn small" target="_blank">ثبت‌نام</a>
+              <img src="poster-workshop2.jpg" alt="تصویر کارگاه">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="event" data-kind="seminar" data-date="2025-09-10">
+        <img src="poster-seminar.jpg" alt="پوستر سمینار" class="event-pic">
+        <div class="event-body">
+          <h4>سمینار: امنیت نرم‌افزار</h4>
+          <p class="evt-meta">۱۰ شهریور ۱۴۰۴ • ساعت ۱۰-۱۲</p>
+          <p class="evt-desc">بررسی آسیب‌پذیری‌ها و روش‌های امن‌سازی توسعه نرم‌افزار.</p>
+          <div class="event-actions">
+            <button class="btn small toggle-details">اطلاعات بیشتر</button>
+            <div class="event-details" style="display:none;">
+              <p>جزئیات بیشتر درباره سمینار و منابع.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="event" data-kind="competition" data-date="2025-11-05">
+        <img src="./photo1765678284.jpeg" alt="پوستر مسابقه" class="event-pic">
+        <div class="event-body">
+          <h4>مسابقه برنامه‌نویسی دانشجویی</h4>
+          <p class="evt-meta">۵ آبان ۱۴۰۴</p>
+          <p class="evt-desc">تیم‌ها پروژه‌های خود را ارائه می‌کنند و جوایزی اهدا می‌شود.</p>
+          <div class="event-actions">
+            <button class="btn small toggle-details">اطلاعات بیشتر</button>
+            <div class="event-details" style="display:none;">
+              <p>جزئیات بیشتر درباره مسابقه و ثبت‌نام تیم‌ها.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="event" data-kind="competition" data-date="2025-12-15">
+        <img src="./msg4952504-98175.jpg" alt="پوستر مسابقه تخم‌مرغ" class="event-pic">
+        <div class="event-body">
+          <h4>مسابقه ساخت تخم‌مرغ سقوطی</h4>
+          <p class="evt-meta">۲۳ آذر ۱۴۰۴</p>
+          <p class="evt-desc">تیم‌ها سازه‌ای می‌سازند تا تخم‌مرغ را از ارتفاع رها کنند و سالم باقی بماند.</p>
+          <div class="event-actions">
+            <button class="btn small toggle-details">اطلاعات بیشتر</button>
+            <div class="event-details" style="display:none;">
+              <p>جزئیات بیشتر درباره قوانین مسابقه، مواد قابل استفاده و نحوه ثبت‌نام تیم‌ها.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <!--  -->
+    <!-- Channels -->
+    <section id="channels" class="card channels" aria-labelledby="channelsTitle">
+      <h3 id="channelsTitle"> کانال‌ها و راه‌های ارتباطی</h3>
+
+      <div class="channel-list">
+        <a class="channel" href="https://www.instagram.com/engcomp_dez?igsh=MTJycG9nYjN0dGVkNQ==" target="_blank"
+          rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A4.5 4.5 0 1 1 7.5 13 4.5 4.5 0 0 1 12 8.5zm0 7A2.5 2.5 0 1 0 9.5 13 2.5 2.5 0 0 0 12 15.5zm4.25-8.75a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z" />
+          </svg>
+          <span>اینستاگرام</span>
+        </a>
+
+        <a class="channel" href="https://t.me/computer_sciassociation" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M9.5 15.5l-.4 4.3c.6 0 .9-.3 1.2-.6l2.8-2.7 5.8 4.2c1 .6 1.7.3 2-.9l3.6-16.7c.3-1.2-.4-1.7-1.3-1.4L1.7 10c-1.2.4-1.2 1.1-.2 1.4l4.7 1.5 10.9-6.8c.5-.3 1-.1.6.2z" />
+          </svg>
+          <span>تلگرام</span>
+        </a>
+
+        <a class="channel" href="https://chat.whatsapp.com/JBLRCANSnPEDCt16ZhQaf9?mode=hqrt2" target="_blank"
+          rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 2a10 10 0 0 0-8.7 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.6 14.3c-.2.6-1 1.1-1.6 1.2-.4.1-.9.1-1.5-.1s-1.5-.5-2.6-1.1a12.3 12.3 0 0 1-4.4-4.4C6.7 10.6 6.4 9.6 6.6 9c.1-.6.6-1.4 1.2-1.6h.8c.2 0 .4 0 .6.5l.8 1.8c.1.2.1.4 0 .6a2.5 2.5 0 0 1-.4.6c-.2.3-.3.4-.1.7a10 10 0 0 0 4.4 4.4c.3.2.5.1.7-.1l.6-.4c.2-.1.4-.1.6 0l1.8.8c.4.2.5.4.5.6z" />
+          </svg>
+          <span>واتساپ</span>
+        </a>
+
+        <a class="channel" href="mailto:cs@univ.edu">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 6v12h20V6l-10 6L2 6z" />
+          </svg>
+          <span>ایمیل</span>
+        </a>
+
+        <a class="channel" href="https://eitaa.com/computer_uni_dez" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 512 512" aria-hidden="true">
+            <circle cx="256" cy="256" r="256" fill="#2B3A67" />
+            <path d="M160 160h192v32H192v64h128v32H192v64h160v32H160z" fill="#ffffff" />
+          </svg>
+          <span>ایتا</span>
+        </a>
+
+        <a class="channel" href="tel:09200652305">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M6.6 2l3 1c.4.1.7.4.8.8l1 4c.1.4 0 .9-.3 1.2l-1.7 1.7a15 15 0 0 0 6.8 6.8l1.7-1.7c.3-.3.8-.4 1.2-.3l4 1c.4.1.7.4.8.8l1 3c.2.6-.1 1.2-.7 1.4A19 19 0 0 1 2 7.3c-.2-.6.2-1.3.8-1.4l3.8-1c.4-.1.8-.1 1 .1z" />
+          </svg>
+          <span>تماس تلفنی</span>
+        </a>
+
+      </div>
+    </section>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div>© انجمن علمی کامپیوتر دانشگاه آزاد دزفول </div>
+        <div class="muted">یادگیری، تجربه، رشد — کنار هم</div>
+      </div>
+    </footer>
+
+
+  </div>
+
+  <script>
+    // Toggle mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Toggle event details
+    document.querySelectorAll('.toggle-details').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const details = btn.closest('.event').querySelector('.event-details');
+        if (details.style.display === 'block') details.style.display = 'none';
+        else details.style.display = 'block';
+      });
+    });
+
+    // Filter and sort
+    const typeFilter = document.getElementById('eventType');
+    const sortFilter = document.getElementById('eventSort');
+    const eventsList = document.getElementById('eventsList');
+
+    function filterAndSort() {
+      const typeVal = typeFilter.value;
+      const sortVal = sortFilter.value;
+      let events = Array.from(eventsList.querySelectorAll('.event'));
+
+      // Filter
+      events.forEach(ev => {
+        if (typeVal === 'all' || ev.dataset.kind === typeVal) ev.style.display = 'flex';
+        else ev.style.display = 'none';
+      });
+
+      // Sort
+      events.sort((a, b) => {
+        if (sortVal === 'newest') return new Date(b.dataset.date) - new Date(a.dataset.date);
+        if (sortVal === 'oldest') return new Date(a.dataset.date) - new Date(b.dataset.date);
+        if (sortVal === 'alpha') return a.querySelector('h4').textContent.localeCompare(b.querySelector('h4').textContent);
+      });
+
+      events.forEach(ev => eventsList.appendChild(ev));
+    }
+
+    typeFilter.addEventListener('change', filterAndSort);
+    sortFilter.addEventListener('change', filterAndSort);
+
+
+    // zoom
+    // زوم عکس رویدادها
+let overlay = null;
+
+document.querySelectorAll(".event-pic").forEach(img => {
+  img.style.cursor = "zoom-in";
+
+  img.addEventListener("click", () => {
+    // اگر overlay قبلاً بازه، ببند
+    if (overlay) {
+      overlay.remove();
+      overlay = null;
+      return;
+    }
+
+    // ساخت overlay
+    overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = "100vw";
+    overlay.style.height = "100vh";
+    overlay.style.background = "rgba(0,0,0,0.8)";
+    overlay.style.display = "flex";
+    overlay.style.alignItems = "center";
+    overlay.style.justifyContent = "center";
+    overlay.style.zIndex = 9999;
+    overlay.style.cursor = "zoom-out";
+
+    // ساخت تصویر بزرگ
+    const bigImg = document.createElement("img");
+    bigImg.src = img.src;
+    bigImg.style.maxWidth = "90%";
+    bigImg.style.maxHeight = "90%";
+    bigImg.style.borderRadius = "12px";
+    bigImg.style.boxShadow = "0 20px 60px rgba(0,0,0,0.6)";
+
+    overlay.appendChild(bigImg);
+    document.body.appendChild(overlay);
+
+    // بستن با کلیک
+    overlay.addEventListener("click", () => {
+      overlay.remove();
+      overlay = null;
+    });
+  });
+});
+
+  </script>
+</body>
+
+</html>
